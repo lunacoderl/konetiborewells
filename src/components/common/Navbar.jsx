@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Phone, MessageCircle, Menu, X, ArrowRight, Clock } from 'lucide-react';
+import { Phone, MessageCircle, Menu, X, ArrowRight } from 'lucide-react';
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
+
+  const isHome = location.pathname === '/';
 
   useEffect(() => {
     const handleScroll = () => {
@@ -35,6 +37,9 @@ export default function Navbar() {
     { label: 'FAQ', path: '/#faq' }
   ];
 
+  // When on homepage and not scrolled: transparent dark overlay with crisp white text
+  const isTransparentHero = isHome && !scrolled;
+
   return (
     <>
       <header
@@ -45,12 +50,22 @@ export default function Navbar() {
           right: 0,
           zIndex: 999,
           height: 'var(--navbar-height)',
-          transition: 'all 0.25s ease',
-          backgroundColor: scrolled ? 'rgba(255, 255, 255, 0.96)' : 'rgba(248, 251, 250, 0.85)',
-          backdropFilter: 'blur(12px)',
-          WebkitBackdropFilter: 'blur(12px)',
-          boxShadow: scrolled ? '0 4px 20px rgba(17, 30, 36, 0.08)' : 'none',
-          borderBottom: scrolled ? '1px solid var(--color-border)' : '1px solid transparent'
+          transition: 'all 0.28s ease',
+          backgroundColor: scrolled
+            ? 'rgba(255, 255, 255, 0.96)'
+            : isTransparentHero
+            ? 'rgba(14, 25, 30, 0.55)'
+            : 'rgba(248, 251, 250, 0.92)',
+          backdropFilter: 'blur(14px)',
+          WebkitBackdropFilter: 'blur(14px)',
+          boxShadow: scrolled
+            ? '0 4px 20px rgba(17, 30, 36, 0.08)'
+            : 'none',
+          borderBottom: scrolled
+            ? '1px solid var(--color-border)'
+            : isTransparentHero
+            ? '1px solid rgba(255, 255, 255, 0.12)'
+            : '1px solid transparent'
         }}
       >
         <div
@@ -82,7 +97,7 @@ export default function Navbar() {
                   borderRadius: '10px',
                   overflow: 'hidden',
                   backgroundColor: '#FFFFFF',
-                  boxShadow: '0 2px 8px rgba(8, 126, 164, 0.15)',
+                  boxShadow: '0 2px 10px rgba(0, 0, 0, 0.2)',
                   border: '1px solid var(--color-border)',
                   display: 'flex',
                   alignItems: 'center',
@@ -101,12 +116,13 @@ export default function Navbar() {
                 <span
                   style={{
                     fontFamily: 'var(--font-heading)',
-                    fontSize: '1.22rem',
+                    fontSize: '1.24rem',
                     fontWeight: 800,
                     letterSpacing: '-0.02em',
-                    color: 'var(--color-dark-text)',
+                    color: isTransparentHero ? '#FFFFFF' : 'var(--color-dark-text)',
                     lineHeight: 1.1,
-                    display: 'block'
+                    display: 'block',
+                    transition: 'color 0.25s ease'
                   }}
                 >
                   KONETI
@@ -118,17 +134,26 @@ export default function Navbar() {
                     fontWeight: 700,
                     letterSpacing: '0.08em',
                     textTransform: 'uppercase',
-                    color: 'var(--color-primary-blue)',
+                    color: isTransparentHero ? '#12B8C4' : 'var(--color-primary-blue)',
                     display: 'block'
                   }}
                 >
-                  Borewells & Motors
+                  Borewells &amp; Motors
                 </span>
               </div>
             </Link>
 
-            {/* Unique Status Indicator: Available 24/7 */}
-            <div className="status-indicator" style={{ display: 'flex', alignItems: 'center' }}>
+            {/* Status Indicator: Available 24/7 */}
+            <div
+              className="status-indicator"
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                backgroundColor: isTransparentHero ? 'rgba(16, 185, 129, 0.18)' : '#E6FBF7',
+                borderColor: isTransparentHero ? 'rgba(16, 185, 129, 0.45)' : '#B8EFE4',
+                color: isTransparentHero ? '#34D399' : '#058A72'
+              }}
+            >
               <span className="status-dot"></span>
               <span>Available 24/7</span>
             </div>
@@ -151,12 +176,13 @@ export default function Navbar() {
                   fontFamily: 'var(--font-heading)',
                   fontSize: '0.94rem',
                   fontWeight: 600,
-                  color: 'var(--color-dark-text)',
+                  color: isTransparentHero ? '#E2EFF2' : 'var(--color-dark-text)',
                   textDecoration: 'none',
                   padding: '6px 4px',
-                  position: 'relative'
+                  position: 'relative',
+                  transition: 'color 0.2s ease'
                 }}
-                className="nav-link-hover"
+                className={isTransparentHero ? 'nav-link-hero' : 'nav-link-hover'}
               >
                 {link.label}
               </a>
@@ -167,17 +193,17 @@ export default function Navbar() {
           <div style={{ display: 'none', alignItems: 'center', gap: '12px' }} className="desktop-nav-actions">
             <a
               href="tel:09246622995"
-              className="btn btn-secondary btn-sm"
+              className={isTransparentHero ? 'btn btn-ghost-white btn-sm' : 'btn btn-secondary btn-sm'}
               style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.88rem' }}
               title="Call Koneti Borewells & Motors"
             >
-              <Phone size={15} style={{ color: 'var(--color-primary-blue)' }} />
+              <Phone size={15} color={isTransparentHero ? '#12B8C4' : 'var(--color-primary-blue)'} />
               <span>092466 22995</span>
             </a>
 
             <a
               href="#contact"
-              className="btn btn-primary btn-sm"
+              className={isTransparentHero ? 'btn btn-accent btn-sm' : 'btn btn-primary btn-sm'}
               style={{ display: 'flex', alignItems: 'center', gap: '6px' }}
             >
               <span>Book a Quote</span>
@@ -195,10 +221,11 @@ export default function Navbar() {
               width: '42px',
               height: '42px',
               borderRadius: '8px',
-              border: '1px solid var(--color-border)',
-              backgroundColor: '#FFFFFF',
-              color: 'var(--color-dark-text)',
-              cursor: 'pointer'
+              border: isTransparentHero ? '1px solid rgba(255, 255, 255, 0.25)' : '1px solid var(--color-border)',
+              backgroundColor: isTransparentHero ? 'rgba(255, 255, 255, 0.15)' : '#FFFFFF',
+              color: isTransparentHero ? '#FFFFFF' : 'var(--color-dark-text)',
+              cursor: 'pointer',
+              backdropFilter: isTransparentHero ? 'blur(8px)' : 'none'
             }}
             className="mobile-hamburger-btn"
             aria-label={mobileMenuOpen ? 'Close Menu' : 'Open Navigation Menu'}
@@ -215,8 +242,8 @@ export default function Navbar() {
             position: 'fixed',
             inset: 0,
             zIndex: 998,
-            backgroundColor: 'rgba(17, 30, 36, 0.5)',
-            backdropFilter: 'blur(4px)',
+            backgroundColor: 'rgba(11, 20, 24, 0.65)',
+            backdropFilter: 'blur(6px)',
             display: 'flex',
             justifyContent: 'flex-end'
           }}
@@ -228,7 +255,7 @@ export default function Navbar() {
               maxWidth: '340px',
               height: '100%',
               backgroundColor: '#FFFFFF',
-              boxShadow: '-8px 0 32px rgba(0, 0, 0, 0.15)',
+              boxShadow: '-8px 0 32px rgba(0, 0, 0, 0.25)',
               display: 'flex',
               flexDirection: 'column',
               padding: '24px 20px',
@@ -316,7 +343,7 @@ export default function Navbar() {
         </div>
       )}
 
-      {/* Responsive media style override for Navbar */}
+      {/* Responsive media style override */}
       <style>{`
         @media (min-width: 992px) {
           .desktop-nav-menu { display: flex !important; }
@@ -325,6 +352,9 @@ export default function Navbar() {
         }
         .nav-link-hover:hover {
           color: var(--color-primary-blue) !important;
+        }
+        .nav-link-hero:hover {
+          color: #12B8C4 !important;
         }
       `}</style>
     </>
