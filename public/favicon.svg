@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <rect width="64" height="64" rx="14" fill="#087EA4" />
+  <!-- Strata layers -->
+  <path d="M8 20L56 20" stroke="#12B8C4" stroke-width="2" stroke-dasharray="4 2" opacity="0.6"/>
+  <path d="M8 36L56 36" stroke="#C98545" stroke-width="2" stroke-dasharray="6 3" opacity="0.5"/>
+  <!-- Borewell Casing Drill -->
+  <rect x="28" y="10" width="8" height="44" rx="2" fill="#FFFFFF" />
+  <line x1="32" y1="12" x2="32" y2="48" stroke="#087EA4" stroke-width="2" stroke-dasharray="2 2"/>
+  <!-- Drill Bit -->
+  <polygon points="26,52 38,52 32,60" fill="#F4B942"/>
+  <!-- Water Droplet Rising -->
+  <path d="M32 20C32 20 25 28 25 32C25 35.866 28.134 39 32 39C35.866 39 39 35.866 39 32C39 28 32 20 32 20Z" fill="#12B8C4" />
+  <circle cx="34" cy="30" r="1.5" fill="#FFFFFF" opacity="0.8"/>
+</svg>
