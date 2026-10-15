@@ -1,8 +1,9 @@
 {
+  "$schema": "https://openapi.vercel.sh/vercel.json",
   "framework": "vite",
   "rewrites": [
     {
-      "source": "/((?!assets/|services/|gallery/|video-showcase/|.*\\.(png|svg|ico|txt|xml|json)).*)",
+      "source": "/(.*)",
       "destination": "/index.html"
     }
   ],

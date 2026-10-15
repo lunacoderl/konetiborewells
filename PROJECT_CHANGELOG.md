@@ -26,6 +26,12 @@
 - `src/data/services.js` (modified - updated 4 canonical URLs)
 - `src/components/common/Breadcrumbs.jsx` (modified - bound schema items to siteSeo.baseUrl)
 - `public/robots.txt` (modified - updated sitemap directive)
-- `public/sitemap.xml` (modified - all 7 URLs updated to live domain)
-- `vercel.json` (modified - static asset exemption on SPA rewrites)
-- `PROJECT_CHANGELOG.md` (created - persistent changelog)
+- `public/sitemap.xml` (modified - all 7 URLs updated to live domain, added Google image metadata)
+- `vercel.json` (modified - fixed rewrite rule to standard valid schema to unblock Vercel deployments)
+- `PROJECT_CHANGELOG.md` (updated - persistent changelog)
+
+## [2026-10-15 Update] - GSC "URL Not Allowed" & Vercel Deployment Fix
+- Fixed Vercel deployment block: removed complex negative lookahead regex from `vercel.json` and applied standard valid Vercel SPA rewrite schema so Vercel can deploy the updated site and purge edge cache.
+- Resolved Google Search Console "URL not allowed (7 instances)" error by ensuring all sitemap entries strictly match the verified GSC domain `https://www.konetiborewellsmotors.online/`.
+- Enriched all 7 URLs in `public/sitemap.xml` with `<image:image>` metadata for brand banner, logo, and all 4 specialized borewell/pump service photographs for Google Image Search discovery.
+
