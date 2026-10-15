@@ -13,32 +13,15 @@ import ServiceFaq from '../components/service/ServiceFaq';
 import RelatedServices from '../components/service/RelatedServices';
 import ServiceCta from '../components/service/ServiceCta';
 import NotFound from './NotFound';
+import SeoHead from '../components/common/SeoHead';
 
 export default function ServiceDetails() {
   const { slug } = useParams();
   const service = getServiceBySlug(slug);
 
   useEffect(() => {
-    if (service) {
-      // Dynamic SEO document title
-      document.title = service.seo?.title || `${service.title} in Visakhapatnam | Koneti Borewells`;
-      
-      // Dynamic meta description
-      let metaDesc = document.querySelector("meta[name='description']");
-      if (metaDesc && service.seo?.description) {
-        metaDesc.setAttribute('content', service.seo.description);
-      }
-
-      // Canonical link update
-      let canonicalLink = document.querySelector("link[rel='canonical']");
-      if (canonicalLink && service.seo?.canonical) {
-        canonicalLink.setAttribute('href', service.seo.canonical);
-      }
-
-      // Scroll to top on route change
-      window.scrollTo(0, 0);
-    }
-  }, [slug, service]);
+    window.scrollTo(0, 0);
+  }, [slug]);
 
   if (!service) {
     return <NotFound />;
@@ -46,6 +29,11 @@ export default function ServiceDetails() {
 
   return (
     <main className="main-content">
+      <SeoHead
+        title={service.seo?.title || `${service.title} in Visakhapatnam | Koneti Borewells`}
+        description={service.seo?.description || service.tagline}
+        canonicalPath={`/services/${service.slug}`}
+      />
       {/* 1. Service Hero with Breadcrumbs & Single H1 */}
       <ServiceHero service={service} />
 

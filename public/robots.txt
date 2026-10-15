@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.konetiborewellsvizag.com/sitemap.xml
+Sitemap: https://www.konetiborewellsmotors.online/sitemap.xml

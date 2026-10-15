@@ -1,12 +1,9 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { Compass, Home, Phone, ArrowRight } from 'lucide-react';
+import SeoHead from '../components/common/SeoHead';
 
 export default function NotFound() {
-  useEffect(() => {
-    document.title = 'Page Not Found | Koneti Borewells & Motors';
-  }, []);
-
   return (
     <main
       className="main-content"
@@ -21,6 +18,7 @@ export default function NotFound() {
       }}
     >
       <div className="site-container-narrow" style={{ textAlign: 'center' }}>
+        <SeoHead title="Page Not Found | Koneti Borewells & Motors" noIndex={true} />
         <div
           style={{
             width: '74px',

@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import SeoHead from '../components/common/SeoHead';
 import HeroSection from '../components/home/HeroSection';
 import TrustRibbon from '../components/home/TrustRibbon';
 import AboutSection from '../components/home/AboutSection';
@@ -17,15 +18,6 @@ import FinalCtaSection from '../components/home/FinalCtaSection';
 
 export default function Home() {
   useEffect(() => {
-    // Dynamic SEO for Homepage
-    document.title = 'Koneti Borewells & Motors | Borewell Drilling in Visakhapatnam';
-    
-    // Ensure canonical URL
-    let canonicalLink = document.querySelector("link[rel='canonical']");
-    if (canonicalLink) {
-      canonicalLink.setAttribute('href', 'https://www.konetiborewellsvizag.com/');
-    }
-
     // Scroll to hash if present in URL
     if (window.location.hash) {
       const id = window.location.hash.substring(1);
@@ -40,6 +32,7 @@ export default function Home() {
 
   return (
     <main className="main-content">
+      <SeoHead canonicalPath="/" />
       {/* 1. HERO "Reliable Water Starts Beneath the Surface" */}
       <HeroSection />
 

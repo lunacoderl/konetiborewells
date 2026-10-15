@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ChevronRight, Home } from 'lucide-react';
+import { siteSeo } from '../../siteSeo';
 
 export default function Breadcrumbs({ items }) {
   // Generates Schema.org BreadcrumbList JSON-LD
@@ -11,7 +12,7 @@ export default function Breadcrumbs({ items }) {
       '@type': 'ListItem',
       'position': index + 1,
       'name': item.label,
-      'item': item.path ? `https://www.konetiborewellsvizag.com${item.path}` : undefined
+      'item': item.path ? `${siteSeo.baseUrl}${item.path}` : undefined
     }))
   };
 

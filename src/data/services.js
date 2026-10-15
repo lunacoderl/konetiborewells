@@ -189,7 +189,7 @@ export const services = [
     seo: {
       title: 'Borewell Drilling Services in Visakhapatnam | Koneti Borewells',
       description: 'Professional 4½" and 6½" borewell drilling services across Visakhapatnam. Heavy pneumatic rigs, experienced operators, 24/7 availability. Call 092466 22995.',
-      canonical: 'https://www.konetiborewellsvizag.com/services/borewell-drilling'
+      canonical: 'https://www.konetiborewellsmotors.online/services/borewell-drilling'
     }
   },
 
@@ -376,7 +376,7 @@ export const services = [
     seo: {
       title: 'Water Pump & Motor Solutions in Visakhapatnam | Koneti Borewells',
       description: 'Quality submersible pumps, starter panels, lowering and motor repair across Visakhapatnam. 24/7 service. Call Koneti Borewells at 092466 22995.',
-      canonical: 'https://www.konetiborewellsvizag.com/services/pump-motor-solutions'
+      canonical: 'https://www.konetiborewellsmotors.online/services/pump-motor-solutions'
     }
   },
 
@@ -563,7 +563,7 @@ export const services = [
     seo: {
       title: 'Borewell Cleaning & Flushing in Visakhapatnam | Koneti Borewells',
       description: 'High-pressure borewell cleaning, mud removal and flushing services across Visakhapatnam. Restore water yield. 24/7 service. Call 092466 22995.',
-      canonical: 'https://www.konetiborewellsvizag.com/services/borewell-cleaning-maintenance'
+      canonical: 'https://www.konetiborewellsmotors.online/services/borewell-cleaning-maintenance'
     }
   },
 
@@ -750,7 +750,7 @@ export const services = [
     seo: {
       title: 'Groundwater Survey & Borewell Siting Vizag | Koneti Borewells',
       description: 'Scientific borewell siting and groundwater assessment in Visakhapatnam. Minimize dry-well risk with experienced site evaluation. Call 092466 22995.',
-      canonical: 'https://www.konetiborewellsvizag.com/services/groundwater-survey'
+      canonical: 'https://www.konetiborewellsmotors.online/services/groundwater-survey'
     }
   }
 ];
